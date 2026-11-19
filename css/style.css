@@ -1,0 +1,1427 @@
+/* ==========================================
+   CROCS STORE - ULTIMATE ESTHETIC & INTERACTIVE V2
+   ========================================== */
+
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: #173320;
+    background: linear-gradient(135deg, #f0fce4, #daf7be, #e6fcf0);
+    background-size: 200% 200%;
+    animation: gradientShift 15s ease infinite;
+    line-height: 1.7;
+    overflow-x: hidden;
+}
+
+/* ==========================================
+   KEYFRAMES ANIMASI & EFEK GERAK
+   ========================================== */
+
+@keyframes gradientShift {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Animasi mengambang untuk logo buaya */
+@keyframes floatMascot {
+    0% { transform: translate(-50%, -50%) rotate(-4deg) scale(1); }
+    50% { transform: translate(-50%, -58%) rotate(4deg) scale(1.08); }
+    100% { transform: translate(-50%, -50%) rotate(-4deg) scale(1); }
+}
+
+/* Animasi denyut badge */
+@keyframes pulseBadge {
+    0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 51, 102, 0.4); }
+    70% { transform: scale(1.08); box-shadow: 0 0 0 10px rgba(255, 51, 102, 0); }
+    100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(255, 51, 102, 0); }
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Animasi teks berjalan (Marquee) */
+@keyframes marqueeText {
+    0% { transform: translateX(100%); }
+    100% { transform: translateX(-100%); }
+}
+
+/* Animasi mengambang santai untuk kartu produk */
+@keyframes subtleFloat {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+
+/* ==========================================
+   HEADER & LOGO BUAYA INTERAKTIF
+   ========================================== */
+
+header {
+    background: linear-gradient(135deg, #13381e, #236b30, #52a335, #7ee33d);
+    background-size: 250% 250%;
+    animation: gradientShift 10s ease infinite;
+    color: white;
+    text-align: center;
+    padding: 75px 20px 50px;
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 15px 45px rgba(35, 107, 48, 0.4);
+}
+
+header::before {
+    content: "";
+    position: absolute;
+    width: 380px;
+    height: 380px;
+    background: rgba(255, 255, 255, 0.12);
+    border-radius: 50%;
+    top: -160px;
+    right: -90px;
+    z-index: 0;
+}
+
+/* LOGO BUAYA BERGERAK & BISA DIKLIK */
+header::after {
+    content: "";
+    position: absolute;
+    top: 52%;
+    left: 50%;
+    width: 290px;
+    height: 290px;
+    background-image: url('../img/images (1).jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 50%;
+    mix-blend-mode: multiply;
+    opacity: 0.22;
+    pointer-events: auto;
+    z-index: 1;
+    cursor: pointer;
+    animation: floatMascot 5s ease-in-out infinite;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+header::after:hover {
+    opacity: 0.45;
+    transform: translate(-50%, -52%) rotate(15deg) scale(1.15) !important;
+}
+
+header::after:active {
+    transform: translate(-50%, -52%) scale(0.9) !important;
+}
+
+header h1 {
+    font-size: 60px;
+    font-weight: 800;
+    letter-spacing: 14px;
+    text-transform: lowercase;
+    text-shadow: 0 5px 25px rgba(10, 40, 15, 0.6);
+    position: relative;
+    z-index: 2;
+    animation: fadeInUp 0.8s ease-out;
+}
+
+header p {
+    margin: 10px 0 25px;
+    font-size: 15px;
+    font-weight: 500;
+    color: #f1ffe6;
+    position: relative;
+    z-index: 2;
+    animation: fadeInUp 1s ease-out;
+}
+
+/* ==========================================
+   EFEK TULISAN BERJALAN (RUNNING TEXT)
+   ========================================== */
+.running-text-container {
+    background: rgba(0, 0, 0, 0.25);
+    padding: 10px 0;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+    z-index: 2;
+    margin-bottom: 25px;
+    border-top: 1px solid rgba(255,255,255,0.25);
+    border-bottom: 1px solid rgba(255,255,255,0.25);
+    backdrop-filter: blur(5px);
+}
+
+.running-text {
+    display: inline-block;
+    animation: marqueeText 20s linear infinite;
+    color: #f4ffe8;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.running-text:hover {
+    animation-play-state: paused;
+    cursor: pointer;
+}
+
+/* NAVIGASI INTERAKTIF */
+nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    position: relative;
+    z-index: 2;
+    animation: fadeInUp 1.2s ease-out;
+}
+
+nav a {
+    text-decoration: none;
+    color: white;
+    font-size: 13px;
+    font-weight: 600;
+    padding: 10px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    border-radius: 30px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(10px);
+    transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+nav a:hover {
+    background: white;
+    color: #236b30;
+    transform: translateY(-5px) scale(1.08);
+    box-shadow: 0 10px 25px rgba(25, 85, 30, 0.35);
+}
+
+nav a:active {
+    transform: translateY(-1px) scale(0.95);
+}
+
+/* MAIN */
+main {
+    max-width: 1250px;
+    width: 92%;
+    margin: 50px auto;
+}
+
+/* SECTION ESTETIK */
+section {
+    background: rgba(255, 255, 255, 0.96);
+    backdrop-filter: blur(15px);
+    padding: 45px;
+    margin-bottom: 45px;
+    border-radius: 30px;
+    box-shadow: 0 12px 40px rgba(35, 107, 48, 0.09);
+    border: 1px solid #d4f5bc;
+    animation: fadeInUp 0.8s ease-out;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section:hover {
+    box-shadow: 0 18px 50px rgba(35, 107, 48, 0.14);
+}
+
+section h2 {
+    text-align: center;
+    font-size: 30px;
+    color: #173820;
+    margin-bottom: 25px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+section h2::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 4px;
+    border-radius: 10px;
+    margin: 12px auto 0;
+    background: linear-gradient(90deg, #52a335, #10b981);
+    transition: width 0.3s ease;
+}
+
+section h2:hover::after {
+    width: 120px;
+}
+
+section p {
+    margin-bottom: 12px;
+    font-size: 14px;
+}
+
+/* TENTANG KAMI */
+.tentang-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 45px;
+    background: linear-gradient(120deg, #ffffff, #edfbea, #e2fceb);
+}
+
+.tentang-gambar {
+    overflow: hidden;
+    border-radius: 24px;
+    box-shadow: 0 12px 35px rgba(35, 107, 48, 0.18);
+}
+
+.tentang-gambar img {
+    width: 100%;
+    height: 340px;
+    object-fit: cover;
+    border-radius: 24px;
+    transition: transform 0.6s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.tentang-gambar img:hover {
+    transform: scale(1.08) rotate(1deg);
+}
+
+.tentang-teks h2 {
+    text-align: left;
+    font-size: 32px;
+}
+
+.tentang-teks h2::after {
+    margin-left: 0;
+}
+
+/* ==========================================
+   KATALOG PRODUK & KARTU INTERAKTIF V2
+   ========================================== */
+
+.katalog-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 28px;
+    margin-top: 30px;
+    width: 100%;
+}
+
+.kartu-produk {
+    width: 100%;
+    min-width: 0;
+    background: linear-gradient(145deg, #ffffff, #f4fcea);
+    padding: 22px;
+    border-radius: 24px;
+    text-align: center;
+    border: 1px solid #d2f0bd;
+    box-shadow: 0 8px 25px rgba(35, 107, 48, 0.08);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    animation: subtleFloat 6s ease-in-out infinite;
+}
+
+/* Membuat animasi melayang kartu tidak bersamaan agar estetik */
+.kartu-produk:nth-child(even) {
+    animation-delay: 2s;
+}
+
+.kartu-produk:nth-child(3n) {
+    animation-delay: 4s;
+}
+
+.kartu-produk:hover {
+    transform: translateY(-14px) scale(1.02);
+    box-shadow: 0 22px 45px rgba(52, 163, 53, 0.28);
+    border-color: #52a335;
+    animation-play-state: paused;
+}
+
+.kartu-produk:active {
+    transform: scale(0.97) translateY(-4px);
+}
+
+.kartu-produk img {
+    display: block;
+    width: 100%;
+    height: 240px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 18px;
+    transition: transform 0.5s ease;
+}
+
+.kartu-produk:hover img {
+    transform: scale(1.07) rotate(-1deg);
+}
+
+.kartu-produk h4 {
+    color: #1a4a25;
+    margin: 15px 0 8px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.kartu-produk h3 {
+    color: #236b30;
+    font-size: 18px;
+}
+
+/* Tombol Harga Interaktif dengan Efek Glow */
+.harga {
+    display: inline-block;
+    color: white;
+    font-weight: 700;
+    padding: 9px 22px;
+    border-radius: 25px;
+    background: linear-gradient(100deg, #236b30, #52a335);
+    margin-top: 10px;
+    box-shadow: 0 5px 15px rgba(82, 163, 53, 0.35);
+    transition: all 0.3s ease;
+}
+
+.kartu-produk:hover .harga {
+    background: linear-gradient(100deg, #13381e, #236b30);
+    transform: scale(1.06);
+    box-shadow: 0 8px 22px rgba(35, 107, 48, 0.45);
+}
+
+/* Badge Favorit Berdenyut Menarik */
+.badge-favorit {
+    position: absolute;
+    top: 14px;
+    left: 14px;
+    z-index: 3;
+    background: linear-gradient(90deg, #ff6b35, #ff3366);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 11px;
+    font-weight: bold;
+    box-shadow: 0 4px 12px rgba(255, 51, 102, 0.35);
+    animation: pulseBadge 2s infinite ease-in-out;
+}
+
+/* ==========================================
+   TABEL PRODUK & HARGA (RATA KIRI PADA KOLOM PRODUK)
+   ========================================== */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 25px 0;
+    border-radius: 18px;
+    overflow: hidden;
+    background: white;
+    box-shadow: 0 10px 30px rgba(35, 107, 48, 0.08);
+}
+
+thead {
+    background: linear-gradient(100deg, #13381e, #236b30, #52a335);
+    color: white;
+}
+
+th {
+    padding: 18px 14px;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+td {
+    padding: 15px 14px;
+    text-align: center;
+    font-size: 13px;
+    border-bottom: 1px solid #edfbe6;
+}
+
+tbody tr:nth-child(even) {
+    background: #f4fbed;
+}
+
+tbody tr:hover {
+    background: #d8f7bf;
+    transition: 0.25s;
+    transform: scale(1.002);
+}
+
+/* Mengatur kolom pertama (Produk) agar rata kiri dengan jarak rapi */
+#produk table th:first-child,
+#produk table td:first-child {
+    text-align: left;
+    padding-left: 25px;
+}
+
+#produk table th:first-child {
+    text-align: left;
+    padding-left: 25px;
+}
+
+/* BANNER PROMO */
+.banner-promo {
+    text-align: center;
+    padding: 50px 30px;
+    margin: 50px 0;
+    border-radius: 30px;
+    color: white;
+    background: linear-gradient(135deg, #13381e, #236b30, #52a335, #10b981);
+    background-size: 200% 200%;
+    animation: gradientShift 8s ease infinite;
+    box-shadow: 0 18px 40px rgba(35, 107, 48, 0.3);
+}
+
+.banner-promo h2 {
+    color: white;
+    font-size: 30px;
+}
+
+.banner-promo h2::after {
+    background: white;
+}
+
+.banner-promo p {
+    color: #f1ffe6;
+    font-size: 15px;
+    margin: 15px 0 25px;
+}
+
+/* TOMBOL WHATSAPP INTERAKTIF */
+.tombol-wa {
+    display: inline-block;
+    padding: 15px 32px;
+    background: linear-gradient(100deg, #ffffff, #f1fbe9);
+    color: #173820;
+    text-decoration: none;
+    border-radius: 35px;
+    font-weight: 700;
+    font-size: 14px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+.tombol-wa:hover {
+    transform: translateY(-5px) scale(1.06);
+    background: #ffffff;
+    color: #13381e;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.25);
+}
+
+.tombol-wa:active {
+    transform: scale(0.95);
+}
+
+/* KEUNGGULAN & KEUNTUNGAN */
+#keunggulan {
+    background: linear-gradient(135deg, #ecfbe1, #daf7be, #f4fef0);
+}
+
+#keuntungan ul {
+    list-style: none;
+    max-width: 680px;
+    margin: auto;
+}
+
+#keuntungan li {
+    background: white;
+    padding: 16px 24px;
+    margin: 14px 0;
+    border-radius: 16px;
+    color: #1a4a25;
+    font-weight: 500;
+    border-left: 6px solid #52a335;
+    box-shadow: 0 6px 18px rgba(35, 107, 48, 0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#keuntungan li:hover {
+    transform: translateX(10px);
+    box-shadow: 0 10px 25px rgba(35, 107, 48, 0.18);
+}
+
+/* TESTIMONI */
+#testimoni {
+    background: linear-gradient(135deg, #f4fbed, #e2fceb, #f7fef3);
+}
+
+/* VIDEO YOUTUBE */
+iframe {
+    display: block;
+    width: 85%;
+    max-width: 750px;
+    aspect-ratio: 16 / 9;
+    height: auto;
+    margin: 45px auto;
+    border: 6px solid white;
+    border-radius: 24px;
+    box-shadow: 0 15px 35px rgba(35, 107, 48, 0.22);
+}
+
+/* TIPS & FAQ */
+#tips p, #faq p {
+    background: white;
+    padding: 18px 22px;
+    border-radius: 16px;
+    margin: 14px 0;
+    border-left: 5px solid #52a335;
+    box-shadow: 0 6px 18px rgba(35, 107, 48, 0.06);
+    transition: transform 0.2s ease;
+}
+
+#tips p:hover, #faq p:hover {
+    transform: translateX(5px);
+}
+
+#faq strong {
+    color: #13381e;
+}
+
+/* ==========================================
+   FORM KONTAK INTERAKTIF
+   ========================================== */
+
+#kontak {
+    background: linear-gradient(135deg, #ecfbe1, #daf7be, #f4fbed);
+    text-align: center;
+}
+
+#kontak form {
+    max-width: 650px;
+    margin: 30px auto 0;
+    background: white;
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 12px 35px rgba(35, 107, 48, 0.1);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#kontak label {
+    font-weight: 600;
+    font-size: 13px;
+    color: #13381e;
+}
+
+#kontak input, #kontak textarea {
+    width: 100%;
+    padding: 14px 18px;
+    border: 1px solid #d2f0bd;
+    border-radius: 14px;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+    background: #f9fef5;
+    transition: all 0.3s ease;
+}
+
+#kontak input:focus, #kontak textarea:focus {
+    outline: none;
+    border-color: #52a335;
+    background: white;
+    box-shadow: 0 0 0 4px rgba(82, 163, 53, 0.18);
+}
+
+#kontak button[type="submit"] {
+    margin-top: 10px;
+    padding: 15px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(100deg, #236b30, #52a335);
+    color: white;
+    font-weight: 700;
+    font-size: 14px;
+    cursor: pointer;
+    box-shadow: 0 6px 18px rgba(35, 107, 48, 0.3);
+    transition: all 0.3s ease;
+}
+
+#kontak button[type="submit"]:hover {
+    background: linear-gradient(100deg, #13381e, #236b30);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(35, 107, 48, 0.4);
+}
+
+#kontak button[type="submit"]:active {
+    transform: scale(0.97);
+}
+
+/* TOMBOL KEMBALI KE ATAS (.back-to-top) */
+.back-to-top {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: linear-gradient(135deg, #236b30, #52a335);
+    color: white;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 18px;
+    box-shadow: 0 8px 22px rgba(35, 107, 48, 0.4);
+    transition: all 0.3s ease;
+    z-index: 99;
+}
+
+.back-to-top:hover {
+    transform: translateY(-5px) scale(1.12);
+    background: linear-gradient(135deg, #13381e, #236b30);
+}
+
+.back-to-top:active {
+    transform: scale(0.9);
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 45px 20px;
+    color: white;
+    background: linear-gradient(120deg, #13381e, #236b30, #52a335, #10b981);
+    background-size: 200% 200%;
+    animation: gradientShift 10s ease infinite;
+}
+
+footer p {
+    font-size: 13px;
+    margin: 5px 0;
+}
+
+/* ==========================================
+   RESPONSIVE MEDIA QUERIES
+   ========================================== */
+
+@media (max-width: 900px) {
+    .tentang-grid {
+        grid-template-columns: 1fr;
+    }
+    .katalog-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 600px) {
+    header {
+        padding: 50px 15px 30px;
+    }
+    header::after {
+        width: 200px;
+        height: 200px;
+    }
+    header h1 {
+        font-size: 38px;
+        letter-spacing: 6px;
+    }
+    .katalog-grid {
+        grid-template-columns: 1fr;
+    }
+    section {
+        padding: 25px 18px;
+    }
+}
+
+/* SELEKSI TEKS */
+::selection {
+    background: #52a335;
+    color: white;
+}
+/* ==========================================
+   DESAIN BARU: KONTAK (GRADASI HIJAU CROCS & ELEMEN BERGERAK)
+   ========================================== */
+
+#kontak {
+    /* Gradasi hijau yang lebih pas, elegan, dan senada dengan tema Crocs */
+    background: linear-gradient(135deg, #1b4d2b, #2e7d32, #43a047, #66bb6a);
+    background-size: 300% 300%;
+    animation: contactGradientFlow 12s ease infinite;
+    position: relative;
+    overflow: hidden;
+    color: white;
+    border-radius: 30px;
+    padding: 60px 20px;
+    box-shadow: 0 15px 45px rgba(27, 77, 43, 0.25);
+}
+
+@keyframes contactGradientFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Elemen Dekorasi Gelembung Cahaya Bergerak di Background Kontak */
+#kontak::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    top: -100px;
+    left: -100px;
+    animation: floatBubble 8s ease-in-out infinite;
+    pointer-events: none;
+}
+
+#kontak::after {
+    content: "";
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    background: rgba(255, 255, 255, 0.08);
+    border-radius: 50%;
+    bottom: -80px;
+    right: -80px;
+    animation: floatBubble 6s ease-in-out infinite reverse;
+    pointer-events: none;
+}
+
+@keyframes floatBubble {
+    0%, 100% { transform: translate(0, 0) scale(1); }
+    50% { transform: translate(25px, 20px) scale(1.08); }
+}
+
+/* Menyesuaikan warna teks judul dan alamat agar kontras dan jelas di atas gradasi hijau */
+#kontak h2 {
+    color: #ffffff !important;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+#kontak h2::after {
+    background: linear-gradient(90deg, #a8ff78, #78ffd6);
+}
+
+#kontak p {
+    color: #f1ffe6;
+}
+
+/* Animasi teks alamat berjalan perlahan */
+#kontak p:nth-of-type(1) {
+    display: inline-block;
+    white-space: nowrap;
+    animation: addressSlide 7s ease-in-out infinite alternate;
+    position: relative;
+}
+
+@keyframes addressSlide {
+    0% { transform: translateX(-15px); }
+    100% { transform: translateX(15px); }
+}
+
+/* Kotak Form Kontak dengan Efek Glassmorphism (Kaca Transparan Estetik) */
+#kontak form {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow: 0 15px 40px rgba(10, 35, 18, 0.2);
+    border-radius: 24px;
+    padding: 40px;
+    margin-top: 30px;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+#kontak form:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 50px rgba(10, 35, 18, 0.3);
+}
+
+#kontak label {
+    color: #1b4d2b;
+    font-weight: 600;
+}
+
+#kontak input, #kontak textarea {
+    background: #f4fceb;
+    border: 1px solid #c2e0aa;
+    color: #173320;
+}
+
+#kontak input:focus, #kontak textarea:focus {
+    border-color: #388e3c;
+    background: #ffffff;
+    box-shadow: 0 0 0 4px rgba(56, 142, 60, 0.2);
+}
+
+/* Tombol Kirim Pesan dengan Gradasi Animasi */
+#kontak button[type="submit"] {
+    background: linear-gradient(120deg, #1b4d2b, #2e7d32, #43a047);
+    background-size: 200% 200%;
+    animation: buttonFlow 5s ease infinite;
+    color: white;
+    font-weight: 700;
+    border-radius: 30px;
+    padding: 15px;
+    cursor: pointer;
+    border: none;
+    box-shadow: 0 6px 20px rgba(27, 77, 43, 0.3);
+    transition: all 0.3s ease;
+}
+
+@keyframes buttonFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+#kontak button[type="submit"]:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 10px 25px rgba(27, 77, 43, 0.45);
+}
+/* ==========================================
+   ANIMASI BARU BAGIAN "TENTANG KAMI" (NON-LINGKARAN)
+   ========================================== */
+
+#tentang {
+    position: relative;
+    overflow: hidden;
+}
+
+/* 1. Elemen Kotak Geometris Estetik Berputar Pelan di Kanan Bawah */
+#tentang::before {
+    content: "";
+    position: absolute;
+    width: 110px;
+    height: 110px;
+    border: 3px solid rgba(82, 163, 53, 0.22);
+    background: linear-gradient(135deg, rgba(118, 192, 67, 0.12), transparent);
+    border-radius: 22px; /* Kotak sudut tumpul modern */
+    bottom: 20px;
+    right: 35px;
+    pointer-events: none;
+    z-index: 0;
+    animation: spinSquare 10s ease-in-out infinite alternate;
+}
+
+/* 2. Elemen Pita Garis Diagonal Bergerak di Sudut Kanan Atas */
+#tentang::after {
+    content: "";
+    position: absolute;
+    width: 140px;
+    height: 18px;
+    background: linear-gradient(90deg, rgba(82, 163, 53, 0.25), rgba(16, 185, 129, 0.05));
+    border-radius: 10px;
+    top: 35px;
+    right: -20px;
+    transform: rotate(-35deg);
+    pointer-events: none;
+    z-index: 0;
+    animation: slideRibbon 4s ease-in-out infinite alternate;
+}
+
+@keyframes spinSquare {
+    0% { transform: rotate(10deg) translateY(0px); }
+    100% { transform: rotate(55deg) translateY(-18px); }
+}
+
+@keyframes slideRibbon {
+    0% { transform: rotate(-35deg) translateX(0px); }
+    100% { transform: rotate(-35deg) translateX(-25px); }
+}
+
+.tentang-teks {
+    position: relative;
+    z-index: 2;
+}
+
+/* 3. Animasi Kotak Logo Crocs: Efek Denyut Cahaya (Pulse Glow) & Miring Halus */
+.tentang-gambar {
+    position: relative;
+    z-index: 2;
+    border-radius: 24px;
+    animation: cardTiltGlow 5s ease-in-out infinite alternate;
+}
+
+@keyframes cardTiltGlow {
+    0% {
+        transform: rotate(-1.5deg) scale(1);
+        box-shadow: 0 10px 25px rgba(82, 163, 53, 0.25);
+    }
+    100% {
+        transform: rotate(1.5deg) scale(1.02);
+        box-shadow: 0 18px 40px rgba(82, 163, 53, 0.45);
+    }
+}
+/* ==========================================
+   ANIMASI ELEMEN MENCOLOK & TERLIHAT JELAS: "PRODUK DAN HARGA"
+   ========================================== */
+
+#produk {
+    position: relative;
+    overflow: hidden;
+}
+
+/* 1. Elemen Badge Ikon/Bentuk Menclok yang Melayang Aktif di Atas Tabel */
+#produk::after {
+    content: "🔥 BEST OFFERS";
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    background: linear-gradient(135deg, #ff3366, #ff6b35);
+    color: white;
+    font-size: 11px;
+    font-weight: 800;
+    padding: 8px 16px;
+    border-radius: 20px;
+    letter-spacing: 1px;
+    box-shadow: 0 6px 20px rgba(255, 51, 102, 0.4);
+    animation: badgeBounceVisible 2s ease-in-out infinite alternate;
+    z-index: 4;
+    pointer-events: none;
+}
+
+@keyframes badgeBounceVisible {
+    0% { transform: translateY(0) scale(1); box-shadow: 0 4px 15px rgba(255, 51, 102, 0.3); }
+    100% { transform: translateY(-10px) scale(1.08); box-shadow: 0 12px 25px rgba(255, 51, 102, 0.6); }
+}
+
+/* 2. Efek Garis Laser Cahaya Terang Menyapu Tabel Secara Berkala */
+#produk table {
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(35, 107, 48, 0.18);
+}
+
+#produk table::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 40%;
+    height: 100%;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(255, 255, 255, 0.6),
+        transparent
+    );
+    animation: laserScanBright 3.5s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 3;
+}
+
+@keyframes laserScanBright {
+    0% { left: -150%; }
+    100% { left: 200%; }
+}
+
+/* 3. Header Tabel dengan Gradasi Warna Bergerak Mencolok */
+#produk thead {
+    background: linear-gradient(120deg, #13381e, #236b30, #52a335, #10b981, #236b30);
+    background-size: 300% 300%;
+    animation: tableHeaderFlow 6s ease infinite;
+}
+
+@keyframes tableHeaderFlow {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 4. Efek Baris Tabel Melompat Jelas Saat Disorot Kursor */
+#produk tbody tr {
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+#produk tbody tr:hover {
+    transform: translateX(12px) scale(1.015);
+    background-color: #c8f5ab !important;
+    box-shadow: -8px 5px 18px rgba(35, 107, 48, 0.3);
+}
+/* ==========================================
+   ANIMASI ELEMEN MENCOLOK & ESTETIK DI AREA FOTO PRODUK
+   ========================================== */
+
+/* 1. Area pembungkus foto produk diberikan efek latar belakang gradasi hidup */
+.kartu-produk img {
+    position: relative;
+    z-index: 2;
+    transition: transform 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* 2. Membuat ruang kosong di sekitar foto produk memiliki animasi cahaya pemindai bergerak */
+.kartu-produk {
+    position: relative;
+    overflow: hidden;
+}
+
+.kartu-produk::after {
+    content: "";
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        60deg,
+        transparent 40%,
+        rgba(118, 192, 67, 0.25) 50%,
+        transparent 60%
+    );
+    transform: rotate(25deg);
+    animation: productSpaceShimmer 4.5s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes productSpaceShimmer {
+    0% { transform: translateY(-100%) rotate(25deg); }
+    100% { transform: translateY(100%) rotate(25deg); }
+}
+
+/* 3. Efek gambar produk membesar dan melayang aktif saat kartu disorot */
+.kartu-produk:hover img {
+    transform: scale(1.08) translateY(-5px);
+    filter: drop-shadow(0 12px 20px rgba(35, 107, 48, 0.35));
+}
+
+/* 4. Bingkai cahaya tipis bergerak di sekeliling kartu produk */
+.kartu-produk {
+    border: 2px solid rgba(118, 192, 67, 0.3);
+    box-shadow: 0 10px 30px rgba(35, 107, 48, 0.08);
+    transition: all 0.4s ease;
+}
+
+.kartu-produk:hover {
+    border-color: #52a335;
+    box-shadow: 0 20px 45px rgba(82, 163, 53, 0.3);
+    transform: translateY(-8px);
+}
+/* ==========================================
+   ANIMASI ELEMEN MENCOLOK & ESTETIK DI AREA KOSONG SECTION
+   ========================================== */
+
+section {
+    position: relative;
+    overflow: hidden;
+}
+
+/* 1. Elemen Garis Geometris/Pita Cahaya Bergeser di Area Kosong Sebelah Kanan */
+section::after {
+    content: "";
+    position: absolute;
+    width: 220px;
+    height: 12px;
+    background: linear-gradient(90deg, #52a335, #10b981, #7ee33d);
+    border-radius: 20px;
+    top: 45%;
+    right: 8%;
+    transform: rotate(-35deg);
+    box-shadow: 0 0 25px rgba(82, 163, 53, 0.4);
+    animation: floatingRibbonMove 5s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes floatingRibbonMove {
+    0% { transform: translateY(0) rotate(-35deg) scale(1); opacity: 0.6; }
+    100% { transform: translateY(-40px) rotate(-25deg) scale(1.15); opacity: 1; }
+}
+
+/* 2. Elemen Kotak/Titik Cahaya Kedua yang Bergerak Menyilang di Area Kosong */
+section::before {
+    content: "";
+    position: absolute;
+    width: 90px;
+    height: 90px;
+    background: radial-gradient(circle, rgba(16, 185, 129, 0.25) 0%, transparent 70%);
+    border-radius: 24px;
+    top: 25%;
+    right: 18%;
+    animation: floatingSquarePulse 7s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes floatingSquarePulse {
+    0% { transform: translate(0, 0) rotate(0deg) scale(1); }
+    100% { transform: translate(-30px, 30px) rotate(45deg) scale(1.3); }
+}
+
+/* Memastikan kartu produk dan teks tetap berada di atas elemen animasi */
+.katalog-grid, .kartu-produk, section h2, section p, table, .tentang-grid {
+    position: relative;
+    z-index: 2;
+}
+/* ==========================================
+   ANIMASI GRADASI BERGERAK & ELEMEN DINAMIS
+   (Bagian Panduan, Tips, FAQ, & Keuntungan)
+   ========================================== */
+
+/* 1. Memberikan gradasi warna background bergerak pada section Size Chart, Tips, FAQ, dan Keuntungan */
+#size-chart, #tips, #faq, #keuntungan {
+    background: linear-gradient(135deg, #f4fbed, #e2fceb, #edfbea, #daf7be);
+    background-size: 300% 300%;
+    animation: guideSectionGradient 10s ease infinite;
+    position: relative;
+    overflow: hidden;
+}
+
+@keyframes guideSectionGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* 2. Menambahkan elemen pita/garis cahaya bergeser di pojok section panduan & FAQ */
+#size-chart::before, #tips::before, #faq::before, #keuntungan::before {
+    content: "";
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 250px;
+    height: 250px;
+    background: radial-gradient(circle, rgba(82, 163, 53, 0.15) 0%, transparent 70%);
+    border-radius: 50%;
+    animation: pulseGuideBubble 6s ease-in-out infinite alternate;
+    pointer-events: none;
+    z-index: 1;
+}
+
+@keyframes pulseGuideBubble {
+    0% { transform: scale(1) translate(0, 0); }
+    100% { transform: scale(1.3) translate(-20px, 20px); }
+}
+
+/* 3. Kartu/Kotak isi panduan, tips, dan FAQ dengan efek kilau bergerak */
+#size-chart table, #tips p, #faq p, #keuntungan li {
+    position: relative;
+    z-index: 2;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Efek interaktif saat kursor menyentuh daftar panduan / tips / FAQ */
+#tips p:hover, #faq p:hover, #keuntungan li:hover {
+    transform: translateX(8px);
+    box-shadow: 0 8px 22px rgba(35, 107, 48, 0.15);
+    background: #ffffff !important;
+}
+
+/* 4. Aksen garis bawah judul section yang ikut berdenyut dinamis */
+#size-chart h2::after, #tips h2::after, #faq h2::after, #keuntungan h2::after {
+    animation: guideLinePulse 3s ease-in-out infinite alternate;
+}
+
+@keyframes guideLinePulse {
+    0% { width: 60px; opacity: 0.6; }
+    100% { width: 130px; opacity: 1; }
+}
+
+/* ===== TAMBAHAN DEKORASI ESTETIK ===== */
+
+/* Gradasi lembut pada background */
+body {
+    background: linear-gradient(
+        135deg,
+        #f0ffe8,
+        #d9f8c5,
+        #e3fff2,
+        #f7ffed
+    );
+    background-size: 300% 300%;
+    animation: bgEstetik 12s ease infinite;
+}
+
+@keyframes bgEstetik {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* Lingkaran dekorasi bergerak */
+header {
+    isolation: isolate;
+}
+
+header::before {
+    box-shadow: 0 0 80px rgba(190,255,150,0.4);
+}
+
+/* Cahaya dekorasi pada setiap section */
+section {
+    background-image:
+        radial-gradient(circle at 95% 10%,
+        rgba(126,227,61,0.13), transparent 25%);
+}
+
+/* Efek kilau pada kartu produk */
+.kartu-produk {
+    background-image: linear-gradient(
+        145deg,
+        #ffffff,
+        #f0ffe5,
+        #e0f8d5
+    );
+}
+
+/* Elemen lingkaran melayang */
+.banner-promo {
+    position: relative;
+    overflow: hidden;
+}
+
+.banner-promo::before {
+    content: "";
+    position: absolute;
+    width: 130px;
+    height: 130px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-radius: 50%;
+    top: -40px;
+    right: 40px;
+    animation: lingkaranGerak 5s ease-in-out infinite alternate;
+}
+
+@keyframes lingkaranGerak {
+    from {
+        transform: translateY(0) rotate(0deg);
+    }
+    to {
+        transform: translateY(35px) rotate(90deg);
+    }
+}
+
+/* Cahaya gradasi pada tombol */
+.tombol-wa {
+    background: linear-gradient(
+        120deg,
+        #ffffff,
+        #d7ffc5,
+        #ffffff
+    );
+    background-size: 200% 200%;
+    animation: tombolGlow 4s ease infinite;
+}
+
+@keyframes tombolGlow {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 100% 50%; }
+}
+/* Membuat kotak running text memenuhi layar */
+.running-text-container {
+    width: 100vw;
+    max-width: none;
+    margin-left: calc(50% - 50vw);
+    margin-right: calc(50% - 50vw);
+    box-sizing: border-box;
+    border-radius: 0;
+}
+/* ===== DESAIN PANDUAN UKURAN CROCS ===== */
+
+#size-chart {
+    position: relative;
+    overflow: hidden;
+    background: linear-gradient(
+        135deg,
+        #eaffed,
+        #d5f7df,
+        #f4fff0,
+        #c9f4df
+    );
+    background-size: 300% 300%;
+    animation: gerakGradient 10s ease infinite;
+    border: 1px solid rgba(95, 190, 110, 0.3);
+    box-shadow: 0 15px 40px rgba(30, 110, 55, 0.12);
+}
+
+/* Judul lebih menarik */
+#size-chart h2 {
+    color: #17452a;
+    text-shadow: 0 3px 12px rgba(55, 150, 80, 0.15);
+    animation: judulNaik 3s ease-in-out infinite;
+}
+
+/* Garis dekorasi di bawah judul */
+#size-chart h2::after {
+    content: "";
+    display: block;
+    width: 100px;
+    height: 5px;
+    margin: 22px auto;
+    border-radius: 20px;
+    background: linear-gradient(90deg, #7bc96f, #36c99a, #a2e86c);
+    background-size: 200% 200%;
+    animation: garisGerak 3s linear infinite;
+}
+
+/* Tabel ukuran */
+#size-chart table {
+    width: 100%;
+    border-radius: 22px;
+    overflow: hidden;
+    box-shadow: 0 12px 30px rgba(20, 80, 40, 0.15);
+    transition: 0.4s ease;
+}
+
+#size-chart table:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 18px 38px rgba(20, 100, 50, 0.2);
+}
+
+/* Header tabel gradasi */
+#size-chart thead {
+    background: linear-gradient(120deg, #123d25, #23833c, #59b536);
+}
+
+#size-chart th {
+    color: white;
+    padding: 22px;
+}
+
+/* Baris tabel */
+#size-chart tbody tr {
+    transition: all 0.3s ease;
+}
+
+#size-chart tbody tr:nth-child(even) {
+    background: linear-gradient(90deg, #f0fae9, #e4f8e8);
+}
+
+#size-chart tbody tr:hover {
+    background: linear-gradient(90deg, #c9f5d2, #a8edc0);
+    transform: scale(1.015);
+    color: #14532d;
+    font-weight: 600;
+}
+
+/* Animasi gradasi */
+@keyframes gerakGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+@keyframes garisGerak {
+    0% { background-position: 0% 50%; }
+    100% { background-position: 200% 50%; }
+}
+
+@keyframes judulNaik {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+}
+
+/* Tampilan HP */
+@media (max-width: 600px) {
+    #size-chart {
+        padding: 20px;
+    }
+
+    #size-chart th,
+    #size-chart td {
+        padding: 12px 8px;
+        font-size: 13px;
+    }
+}
